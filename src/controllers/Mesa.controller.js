@@ -19,7 +19,10 @@ const createMesa = async (req, res) => {
 
 const getMesas = async (req, res) => {
     const mesas = await Mesa.find();
-    res.json(mesas);
+    res.json({
+        mesas,
+        total: mesas.reduce((total, mesa) => total + mesa.total, 0)
+    });
 }
 
 const deleteMesa = async (req, res) => {
@@ -108,6 +111,20 @@ const editCubiertos = async (req, res) => {
     }
 }
 
+const sumarTotalTodasMesas = async (req, res) => {
+    try {
+        const mesas = await Mesa.find();
+        mesas.forEach(mesa => {
+            mesa.total += mesa.cubiertos;
+            mesa.save();
+        }
+        );
+        res.json(mesas);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 export {
     createMesa, 
@@ -117,5 +134,6 @@ export {
     vaciarMesa,
     addPedidoComida,
     editCubiertos,
-    deleteItemPedido
+    deleteItemPedido,
+    sumarTotalTodasMesas
 }
