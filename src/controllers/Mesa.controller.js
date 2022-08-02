@@ -4,12 +4,11 @@ import  Mesa  from '../models/Mesa';
 
 const createMesa = async (req, res) => {
     try{
-    const {numero} = req.body;
+    const mesas = await Mesa.find();
+    const mesa = new Mesa({numero: mesas.length + 1});
 
-    const task = new Mesa({numero});
-
-    await task.save();
-    res.json(task);
+    await mesa.save();
+    res.json(mesa);
     }
     catch(err){
         console.log(err);
