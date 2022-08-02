@@ -81,6 +81,23 @@ const vaciarMesa = async (req, res) => {
     }
 }
 
+const vaciarTodasLasMesas = async (req, res) => {
+    try {
+        const mesas = await Mesa.find();
+        mesas.forEach(mesa => {
+            mesa.pedidos = [];
+            mesa.total = 0;
+            mesa.cubiertos = 0;
+            mesa.cerrada = false;
+            mesa.save();
+        }
+        );
+        res.json(mesas);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const addPedidoComida = async (req, res) => {
     try {
         
@@ -135,5 +152,6 @@ export {
     addPedidoComida,
     editCubiertos,
     deleteItemPedido,
-    sumarTotalTodasMesas
+    sumarTotalTodasMesas,
+    vaciarTodasLasMesas
 }
