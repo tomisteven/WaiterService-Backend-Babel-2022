@@ -13,7 +13,7 @@ const app = express();
 //midlewares
 app.use(express.json());
 app.use(cors())
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 
 //rutas de la aplicacion
 app.use("/", mesaRoutes);
