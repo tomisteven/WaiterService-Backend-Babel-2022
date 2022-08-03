@@ -3,9 +3,7 @@ import {Schema, model} from 'mongoose';
 
 const Mesa = new Schema({
     numero: {
-        type: Number,
-        required: true,
-        default: 'New'
+        type: Number
     },
     total : {
         type: Number,
