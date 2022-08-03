@@ -8,14 +8,15 @@ import{
     addPedidoComida,
     editCubiertos,
     deleteItemPedido,
-    vaciarTodasLasMesas
+    vaciarTodasLasMesas,
+    getMesas2
 } from '../controllers/Mesa.controller';
 
 
 const router = Router()
 
 //rutas de la aplicacion
-
+router.get('/', getMesas2);
 router.get('/mesas', getMesas)
 router.post('/newmesa', createMesa)
 router.post('/newmesa/addpedido/:id', addPedidoComida)

@@ -24,6 +24,15 @@ const getMesas = async (req, res) => {
     });
 }
 
+const getMesas2 = async (req, res) => {
+    try {
+        const mesas = await Mesa.find();
+        res.json(mesas);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const deleteMesa = async (req, res) => {
     try {
         const _id = req.params.id;
@@ -152,5 +161,6 @@ export {
     editCubiertos,
     deleteItemPedido,
     sumarTotalTodasMesas,
-    vaciarTodasLasMesas
+    vaciarTodasLasMesas,
+    getMesas2
 }
