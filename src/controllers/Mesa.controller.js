@@ -16,6 +16,16 @@ const createMesa = async (req, res) => {
 
 }
 
+const getMesa = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const mesa = await Mesa.findById(id);
+        res.json(mesa);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const getMesas = async (req, res) => {
     const mesas = await Mesa.find();
     res.json({
@@ -162,5 +172,6 @@ export {
     deleteItemPedido,
     sumarTotalTodasMesas,
     vaciarTodasLasMesas,
-    getMesas2
+    getMesas2,
+    getMesa
 }

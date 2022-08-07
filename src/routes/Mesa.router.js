@@ -9,7 +9,8 @@ import{
     editCubiertos,
     deleteItemPedido,
     vaciarTodasLasMesas,
-    getMesas2
+    getMesas2,
+    getMesa,
 } from '../controllers/Mesa.controller';
 
 
@@ -18,6 +19,7 @@ const router = Router()
 //rutas de la aplicacion
 router.get('/', getMesas2);
 router.get('/mesas', getMesas)
+router.get('/mesa/:id', getMesa)
 router.post('/newmesa', createMesa)
 router.post('/newmesa/addpedido/:id', addPedidoComida)
 router.delete('/newmesa/:id_pedido/delitem/:id_mesa', deleteItemPedido )
